@@ -84,30 +84,33 @@ public class MainTests {
 		test.log(Status.PASS, "Before Class");	
 	}
 
-	@Ignore
 	@Test
-	public void LoginTest() {
+	public void SignUpTest() {
 		Actions builder = new Actions(webDriver);
 		webDriver.navigate().to("http://www.Autotrader.co.uk");	
 
 		builder.moveToElement(homePage.getSignInButton()).click().perform();
 		builder.moveToElement(loginPage.getSignUpButton()).click().perform();
-		loginPage.getUsernameField().sendKeys(readLoginData.get(2).get(0));
-		loginPage.getPasswordField().sendKeys(readLoginData.get(2).get(1));
-		//builder.moveToElement(loginPage.getsignUpSubmitButton()).click().perform();
+		loginPage.getSignUpUserField().sendKeys(readLoginData.get(3).get(0));
+		loginPage.getSignUpPassField().sendKeys(readLoginData.get(3).get(1));
+		builder.moveToElement(loginPage.getSignUpSubmitButton()).click().perform();
+		test.log(Status.INFO, "Signup Test Complete");
 		
 		try {
 			test.addScreenCaptureFromPath(ScreenShot.take(webDriver, "Make Account"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		if(webDriver.findElement(By.cssSelector("//*[@id='js-header-nav']/ul/li[5]/div[1]/a/i")).isDisplayed()){
-		  test.log(Status.PASS, "Test" + MiscFuncs.getCounter() + " Passed- ");
-		  }
-		  else
-		  test.log(Status.FAIL, "Test Failed- ");
-		 
+		}	
+	}
+	
+	@Test
+	public void LogInTest(){
+		Actions builder = new Actions(webDriver);
+		webDriver.navigate().to("http://www.Autotrader.co.uk");	
+		builder.moveToElement(homePage.getSignInButton()).click().perform();
+		loginPage.getSignInUserField().sendKeys(readLoginData.get(2).get(0));
+		loginPage.getSignInPassField().sendKeys(readLoginData.get(2).get(1));
+		builder.moveToElement(loginPage.getSignInSubmitButton()).click().perform();	
 	}
 	
 	@Test
@@ -116,8 +119,6 @@ public class MainTests {
 		Actions builder = new Actions(webDriver);
 		webDriver.navigate().to("http://www.Autotrader.co.uk");	
 		builder.moveToElement(valPage.getSellMyCarTab()).moveToElement(valPage.getValueMyCar()).click().perform();
-		//valPage.getRegNoField().sendKeys("test");
-		//valPage.getMileageField().sendKeys("");
 		builder.moveToElement(valPage.getRegNoField()).click().sendKeys(readCarData.get(1).get(0)).perform();
 		builder.moveToElement(valPage.getMileageField()).click().sendKeys(readCarData.get(1).get(1)).perform();
 		builder.moveToElement(valPage.getValuationButton()).click().perform();
@@ -132,47 +133,35 @@ public class MainTests {
 	
 	
 	@Test
-	public void Test3() {
-		test.log(Status.INFO, "Test Not Implemented Yet");
-	}
-	
-	@Ignore
-	@Test
 	public void Test4() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
 	
-	@Ignore
 	@Test
 	public void Test5() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
 	
-	@Ignore
 	@Test
 	public void Test6() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
 	
-	@Ignore
 	@Test
 	public void Test7() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
 	
-	@Ignore
 	@Test
 	public void Test8() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
 	
-	@Ignore
 	@Test
 	public void Test9() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
 	}
-	
-	@Ignore
+
 	@Test
 	public void Test10() {
 		test.log(Status.INFO, "Test Not Implemented Yet");
